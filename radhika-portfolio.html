@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radhika Hebbatam — Senior Software Engineer, .NET/C# → AI Systems</title>
+<meta name="description" content="10+ years shipping production .NET/C# backends across banking, healthcare and logistics — now building LLM-powered systems with the same production discipline.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0D1318;
+    --surface:#151E24;
+    --surface-2:#1B262D;
+    --paper:#E7E2D3;
+    --paper-dim:#CFC9B8;
+    --gold:#C7A052;
+    --gold-dim:#8E763D;
+    --signal:#5FC9B8;
+    --text-hi:#F2EFE4;
+    --text-lo:#8FA0A8;
+    --rule:#28353D;
+    --max:1040px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text-hi);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--gold); color:var(--ink); }
+  a{ color:inherit; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--signal);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- status bar ---------- */
+  .statusbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(13,19,24,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--rule);
+  }
+  .statusbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 28px;
+    max-width:var(--max); margin:0 auto;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--text-lo);
+    letter-spacing:0.02em;
+  }
+  .statusbar .name{ color:var(--text-hi); font-weight:500; }
+  .dot{
+    display:inline-block; width:7px; height:7px; border-radius:50%;
+    background:var(--signal);
+    box-shadow:0 0 0 0 rgba(95,201,184,0.6);
+    animation:pulse 2.4s infinite;
+    margin-right:7px;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(95,201,184,0.45);}
+    70%{ box-shadow:0 0 0 7px rgba(95,201,184,0);}
+    100%{ box-shadow:0 0 0 0 rgba(95,201,184,0);}
+  }
+  .statusbar-right{ display:flex; gap:22px; }
+  .statusbar-right a{ text-decoration:none; color:var(--text-lo); transition:color .15s; }
+  .statusbar-right a:hover{ color:var(--signal); }
+  @media (max-width:640px){
+    .statusbar-right{ display:none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:110px 0 90px; position:relative; overflow:hidden; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:''; width:26px; height:1px; background:var(--gold-dim);
+  }
+  h1.name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-optical-sizing:auto;
+    font-size:clamp(42px, 7vw, 74px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    color:var(--text-hi);
+    margin-bottom:18px;
+  }
+  .role-line{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:clamp(14px, 2vw, 17px);
+    color:var(--signal);
+    margin-bottom:30px;
+  }
+  .role-line .arrow{ color:var(--text-lo); }
+  .thesis{
+    max-width:620px;
+    font-size:18px;
+    color:#C7CFD3;
+    margin-bottom:44px;
+  }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    padding:13px 22px;
+    border-radius:2px;
+    text-decoration:none;
+    transition:all .18s ease;
+    border:1px solid var(--rule);
+  }
+  .btn-primary{
+    background:var(--gold);
+    color:var(--ink);
+    border-color:var(--gold);
+    font-weight:500;
+  }
+  .btn-primary:hover{ background:#D8B564; transform:translateY(-1px); }
+  .btn-ghost{ color:var(--text-hi); }
+  .btn-ghost:hover{ border-color:var(--signal); color:var(--signal); }
+
+  /* faint schema backdrop */
+  .hero::after{
+    content:'';
+    position:absolute; right:-120px; top:-60px;
+    width:520px; height:520px;
+    background-image:
+      linear-gradient(var(--rule) 1px, transparent 1px),
+      linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+    background-size:38px 38px;
+    opacity:0.35;
+    -webkit-mask-image: radial-gradient(circle, black, transparent 70%);
+    mask-image: radial-gradient(circle, black, transparent 70%);
+    pointer-events:none;
+  }
+
+  /* ---------- section shell ---------- */
+  section{ padding:88px 0; border-top:1px solid var(--rule); }
+  .sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:44px; }
+  .sec-num{ font-family:'IBM Plex Mono', monospace; color:var(--gold-dim); font-size:13px; }
+  .sec-title{
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:clamp(26px, 4vw, 34px);
+    color:var(--text-hi);
+  }
+  .sec-sub{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    color:var(--text-lo); margin-left:auto; letter-spacing:0.02em;
+  }
+  @media (max-width:640px){ .sec-sub{ display:none; } }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- about ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:56px; }
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid p{ color:#C7CFD3; margin-bottom:16px; font-size:16.5px; }
+  .about-grid p strong{ color:var(--text-hi); font-weight:600; }
+  .stack-card{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:24px 26px;
+  }
+  .stack-card .label{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
+    color:var(--gold); letter-spacing:0.1em; text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .stack-card dl{ display:grid; grid-template-columns:auto 1fr; gap:9px 14px; }
+  .stack-card dt{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-lo); white-space:nowrap; padding-top:2px;
+  }
+  .stack-card dd{ font-size:13.5px; color:#D7DBDB; }
+
+  /* ---------- projects ---------- */
+  .project{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:30px 32px;
+    margin-bottom:22px;
+    transition:border-color .2s ease;
+  }
+  .project:hover{ border-color:var(--gold-dim); }
+  .project-top{
+    display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .project-title-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .status-pill{
+    display:inline-flex; align-items:center;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em;
+    color:var(--signal); border:1px solid rgba(95,201,184,0.35);
+    padding:3px 9px; border-radius:20px;
+  }
+  .project h3{
+    font-family:'Fraunces', serif; font-weight:600; font-size:22px; color:var(--text-hi);
+  }
+  .project-links{ display:flex; gap:16px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; }
+  .project-links a{ text-decoration:none; border-bottom:1px solid var(--gold-dim); padding-bottom:1px; transition:color .15s, border-color .15s; }
+  .project-links a:hover{ color:var(--gold); border-color:var(--gold); }
+  .project-desc{ color:#C7CFD3; font-size:15.5px; margin-bottom:18px; max-width:680px; }
+  .project ul{ list-style:none; margin-bottom:18px; }
+  .project ul li{
+    position:relative; padding-left:18px; font-size:14.5px; color:#B7C0C3; margin-bottom:7px;
+  }
+  .project ul li::before{
+    content:'→'; position:absolute; left:0; color:var(--gold-dim); font-family:'IBM Plex Mono', monospace; font-size:13px;
+  }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:'IBM Plex Mono', monospace; font-size:11px;
+    background:var(--surface-2); border:1px solid var(--rule);
+    color:var(--text-lo); padding:4px 10px; border-radius:2px;
+  }
+
+  /* ---------- experience ---------- */
+  .timeline{ position:relative; }
+  .tl-item{ display:grid; grid-template-columns:150px 1fr; gap:24px; padding:26px 0; border-top:1px solid var(--rule); }
+  .tl-item:first-child{ border-top:none; }
+  .tl-date{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--gold); padding-top:3px; }
+  .tl-role{ font-size:17px; font-weight:600; color:var(--text-hi); margin-bottom:2px; }
+  .tl-company{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text-lo); margin-bottom:12px; }
+  .tl-item ul{ list-style:none; }
+  .tl-item ul li{ position:relative; padding-left:16px; font-size:14.5px; color:#B7C0C3; margin-bottom:6px; }
+  .tl-item ul li::before{ content:'·'; position:absolute; left:0; color:var(--gold-dim); }
+  @media (max-width:640px){
+    .tl-item{ grid-template-columns:1fr; gap:8px; }
+  }
+
+  /* ---------- skills ---------- */
+  .skills-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+  @media (max-width:760px){ .skills-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:520px){ .skills-grid{ grid-template-columns:1fr; } }
+  .skill-group .label{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--gold);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;
+  }
+  .skill-group .chips{ gap:7px; }
+
+  /* ---------- certifications ---------- */
+  .cert-row{ display:flex; flex-wrap:wrap; gap:16px; }
+  .cert{
+    display:flex; align-items:center; gap:14px;
+    background:var(--surface); border:1px solid var(--rule);
+    padding:16px 20px; border-radius:3px; flex:1; min-width:240px;
+    text-decoration:none;
+    transition:border-color .2s;
+  }
+  .cert:hover{ border-color:var(--gold-dim); }
+  .cert-badge{
+    font-family:'Fraunces', serif; font-weight:700; font-size:15px; color:var(--ink);
+    background:var(--gold); width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .cert-name{ font-size:14.5px; font-weight:600; color:var(--text-hi); }
+  .cert-date{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-lo); }
+  .edu{ margin-top:22px; font-size:14.5px; color:var(--text-lo); }
+  .edu strong{ color:var(--text-hi); }
+
+  /* ---------- contact ---------- */
+  .contact{ text-align:left; }
+  .contact-title{
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:clamp(28px, 5vw, 42px);
+    max-width:600px; margin-bottom:28px; color:var(--text-hi);
+  }
+  .contact-row{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:60px; }
+  footer{
+    border-top:1px solid var(--rule);
+    padding:26px 0 50px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-lo);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="statusbar">
+  <div class="statusbar-inner">
+    <span><span class="dot"></span><span class="name">Radhika Hebbatam</span> — Senior Software Engineer</span>
+    <div class="statusbar-right">
+      <a href="#projects">projects</a>
+      <a href="#experience">experience</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none; padding-top:110px;">
+    <div class="eyebrow">Auckland, NZ · Available for select opportunities</div>
+    <h1 class="name">Radhika Hebbatam</h1>
+    <div class="role-line">Senior Software Engineer <span class="arrow">·</span> .NET/C# <span class="arrow">→</span> AI Engineering</div>
+    <p class="thesis">10+ years building production .NET/C# backends across banking, healthcare, and logistics. Now shipping LLM-powered systems — RAG pipelines, Semantic Kernel agents, Azure OpenAI integrations — with the same discipline: clean architecture, CI/CD, and observability.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#projects">View projects</a>
+      <a class="btn btn-ghost" href="mailto:Radhika.hebbatam@outlook.com">Get in touch</a>
+      <a class="btn btn-ghost" href="https://github.com/RadhikaHebbatam" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Profile</h2>
+      <span class="sec-sub mono">background.json</span>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I spent the first decade of my career in <strong>production banking, healthcare, and logistics systems</strong> — building Web APIs, WCF services, and enterprise .NET backends that had to be right the first time, not just fast to ship. That discipline — clean architecture, CI/CD, structured logging, stakeholder alignment — is the same discipline I now bring to AI engineering.</p>
+        <p>At <strong>ASB Bank</strong>, I design and build Web API services for tech insurance products on the bank's production .NET stack, while prototyping applied-AI patterns — Semantic Kernel agents and Azure OpenAI integrations — that extend the bank's existing API-first architecture.</p>
+        <p>Outside my day role, I've shipped three end-to-end AI systems from scratch: a multi-agent appointment booking assistant, a citation-aware legal document RAG app, and a natural-language-queryable product catalogue API — each designed, built, deployed, and debugged solo, the same way I'd approach a production banking service.</p>
+      </div>
+      <div class="stack-card reveal">
+        <div class="label">Currently</div>
+        <dl>
+          <dt>role</dt><dd>Senior Software Engineer, ASB Bank</dd>
+          <dt>focus</dt><dd>API-first backends + applied AI</dd>
+          <dt>exploring</dt><dd>Remote AI engineering roles</dd>
+          <dt>certs</dt><dd>AZ-900, AI-900 · AI-103 in progress</dd>
+          <dt>based</dt><dd>Auckland, New Zealand</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Projects</h2>
+      <span class="sec-sub mono">3 services · self-deployed</span>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-top">
+        <div class="project-title-row">
+          <span class="status-pill"><span class="dot" style="margin-right:6px;"></span>LIVE</span>
+          <h3>AI Appointment Booking Chatbot</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://radhika-appointment-chatbot-c9hmhbe6hqhmc0cc.swedencentral-01.azurewebsites.net/" target="_blank" rel="noopener">Live demo ↗</a>
+          <a href="https://github.com/Radhika-Hebbatam-ai/Appointment-chatbot" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <p class="project-desc">A multi-agent conversational booking assistant built on Semantic Kernel, with an embeddable JS widget any business can drop onto their site — no account required.</p>
+      <ul>
+        <li>Architected five plugins for intent recognition, availability lookup, booking, and notifications</li>
+        <li>Built a shared calendar interface unifying Google Calendar and Outlook so bookings work with a customer's existing setup</li>
+        <li>Added RAG-based pricing and prerequisite lookups, backed by Azure Communication Services email</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">.NET 8</span><span class="chip">Semantic Kernel</span><span class="chip">Azure OpenAI</span>
+        <span class="chip">Google Calendar API</span><span class="chip">Microsoft Graph</span><span class="chip">Azure Comm. Services</span>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-top">
+        <div class="project-title-row">
+          <span class="status-pill"><span class="dot" style="margin-right:6px;"></span>LIVE</span>
+          <h3>Legal Document Q&A — RAG Application</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://radhikahebbatam-legal-doc-qa.hf.space" target="_blank" rel="noopener">Live demo ↗</a>
+          <a href="https://huggingface.co/spaces/RadhikaHebbatam/legal-doc-qa" target="_blank" rel="noopener">HF Space ↗</a>
+        </div>
+      </div>
+      <p class="project-desc">A retrieval-augmented app for grounded, citation-aware Q&A over uploaded legal documents — private by design, with no account required.</p>
+      <ul>
+        <li>Per-session vector store isolation with anonymous JWT auth, so no document ever crosses sessions</li>
+        <li>Embedding pipeline via sentence-transformers; generation via Groq LLaMA 3.3-70B for low-latency answers</li>
+        <li>Containerized with Docker and deployed on Hugging Face Spaces behind a FastAPI backend</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">ChromaDB</span>
+        <span class="chip">Groq LLaMA 3.3-70B</span><span class="chip">React / Vite</span><span class="chip">Docker</span>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-top">
+        <div class="project-title-row">
+          <span class="status-pill" style="color:var(--gold); border-color:rgba(199,160,82,0.4);"><span class="dot" style="background:var(--gold); margin-right:6px;"></span>REPO</span>
+          <h3>Product Catalogue API — .NET 8 + Azure OpenAI</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/RadhikaHebbatam/WebAPI" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <p class="project-desc">A Clean Architecture .NET 8 API that turns free-text search queries into structured product filters using Azure OpenAI.</p>
+      <ul>
+        <li>Repository pattern over Dapper, backed by SQL Server, with four custom middleware components for logging and exception handling</li>
+        <li>Integrated Azure OpenAI (gpt-5-mini) via Azure AI Foundry to parse free-text queries into structured catalogue filters</li>
+        <li>CI/CD via GitHub Actions to a self-hosted runner — including live debugging of secret-scanning blocks and a git-history rewrite</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">.NET 8</span><span class="chip">Clean Architecture</span><span class="chip">Dapper</span>
+        <span class="chip">SQL Server</span><span class="chip">Azure AI Foundry</span><span class="chip">Serilog</span><span class="chip">GitHub Actions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Experience</h2>
+      <span class="sec-sub mono">18+ years · 4 organizations</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-date">Dec 2022 — Present</div>
+        <div>
+          <div class="tl-role">Senior Software Engineer</div>
+          <div class="tl-company">ASB Bank Limited · Auckland, NZ</div>
+          <ul>
+            <li>Design and build Web API services for tech insurance products on the bank's production .NET stack</li>
+            <li>Act as in-team facilitator — manage the backlog, run sprint planning, set priorities with stakeholders</li>
+            <li>Own BAU support and maintenance for live applications with a strong customer-satisfaction track record</li>
+            <li>Prototype applied-AI patterns (Semantic Kernel, Azure OpenAI) extending the bank's API-first architecture</li>
+            <li>Lead migration of DevOps projects and pipelines to GitHub</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Sep — Dec 2014</div>
+        <div>
+          <div class="tl-role">.NET Programmer</div>
+          <div class="tl-company">Stats ChipPAC Pte Ltd · Singapore</div>
+          <ul>
+            <li>Developed web solutions for semiconductor manufacturing production and reporting workflows</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Feb 2010 — May 2014</div>
+        <div>
+          <div class="tl-role">Technical Consultant</div>
+          <div class="tl-company">HP · Bangalore, India</div>
+          <ul>
+            <li>Built and maintained WCF/Web service–based applications for healthcare industry clients</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Dec 2007 — Jan 2010</div>
+        <div>
+          <div class="tl-role">Senior Software Engineer</div>
+          <div class="tl-company">Omega Healthcare India Pvt Ltd · Bangalore, India</div>
+          <ul>
+            <li>Developed web solutions for medical billing and claims processing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Skills</h2>
+      <span class="sec-sub mono">by category</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="label">Languages</div>
+        <div class="chips">
+          <span class="chip">C#</span><span class="chip">Python</span><span class="chip">SQL / T-SQL</span><span class="chip">LINQ</span><span class="chip">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="label">.NET & Web</div>
+        <div class="chips">
+          <span class="chip">.NET 8</span><span class="chip">ASP.NET Core</span><span class="chip">Web API</span><span class="chip">MVC</span><span class="chip">WCF</span><span class="chip">Clean Architecture</span><span class="chip">Dapper</span><span class="chip">EF</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="label">AI / ML</div>
+        <div class="chips">
+          <span class="chip">Azure OpenAI</span><span class="chip">Semantic Kernel</span><span class="chip">RAG</span><span class="chip">ChromaDB</span><span class="chip">sentence-transformers</span><span class="chip">Groq LLaMA 3.3</span><span class="chip">Prompt Engineering</span><span class="chip">Agentic Tool-Calling</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="label">Cloud & DevOps</div>
+        <div class="chips">
+          <span class="chip">Azure AI Foundry</span><span class="chip">Azure Comm. Services</span><span class="chip">GitHub Actions</span><span class="chip">Azure DevOps</span><span class="chip">Octopus Deploy</span><span class="chip">Docker</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="label">Data</div>
+        <div class="chips">
+          <span class="chip">SQL Server</span><span class="chip">SSMS</span><span class="chip">Power BI</span><span class="chip">SSRS</span><span class="chip">SSIS / SSAS</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="label">Tools</div>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">JIRA</span><span class="chip">Postman</span><span class="chip">SoapUI</span><span class="chip">Serilog</span><span class="chip">Agile / Scrum</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">Certifications & Education</h2>
+    </div>
+    <div class="cert-row">
+      <a class="cert reveal" href="https://learn.microsoft.com/api/credentials/share/en-us/RadhikaHebbatam-7401/F4F321BA61163D9E?sharingId=E26E7E3A2B932CAA" target="_blank" rel="noopener">
+        <div class="cert-badge">AZ</div>
+        <div>
+          <div class="cert-name">Microsoft Azure Fundamentals</div>
+          <div class="cert-date">AZ-900 · Issued Jan 2023</div>
+        </div>
+      </a>
+      <a class="cert reveal" href="https://learn.microsoft.com/api/credentials/share/en-us/RadhikaHebbatam-7401/5F4385E0A23D0449?sharingId=E26E7E3A2B932CAA" target="_blank" rel="noopener">
+        <div class="cert-badge">AI</div>
+        <div>
+          <div class="cert-name">Microsoft AI Fundamentals</div>
+          <div class="cert-date">AI-900 · Issued Jan 2026</div>
+        </div>
+      </a>
+    </div>
+    <p class="edu reveal"><strong>Bachelor of Technology</strong> — RGM College of Engineering and Technology, 2002–2006</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <h2 class="sec-title">Contact</h2>
+    </div>
+    <p class="contact-title reveal">Open to senior backend and AI engineering roles — and select freelance builds.</p>
+    <div class="contact-row reveal">
+      <a class="btn btn-primary" href="mailto:Radhika.hebbatam@outlook.com">Radhika.hebbatam@outlook.com</a>
+      <a class="btn btn-ghost" href="https://github.com/RadhikaHebbatam" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Radhika Hebbatam</span>
+    <span class="mono">Built with .NET-grade discipline, shipped with AI-era tools.</span>
+  </footer>
+
+</main>
+
+<script>
+  // scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:0.12 });
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
